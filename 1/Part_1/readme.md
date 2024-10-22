@@ -1,4 +1,4 @@
-The Lab program here tries to validate a credit card of length 8 or 9
+The Lab program here tries to validate a credit card of length 8 or 9 <br />
 For the Algorithm to compute and double the digits at the Odd places I've used the Ascii values <br />
 Observe the pattern in the below displayed  Observed Pattern<br />
 
