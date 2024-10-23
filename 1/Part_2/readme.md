@@ -1,0 +1,3 @@
+This program uses Hashmap in java to store the word strength in "key : value" pairs where key is the character and the value is it's strength.<br/>
+Using this the program computes it's total strength and gives the respective output.<br/>
+Also this program uses contsrtuctor overloading and method overloading to compute the final winner when the words custom character or strengths are provided (or) left and right words are given seperately. <br/>
