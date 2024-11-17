@@ -99,12 +99,14 @@ public class Part_2{
         AlphabetWarGame game = new AlphabetWarGame();
         System.out.println(game.alphabetWar("z"));              // Right side wins!
         System.out.println(game.alphabetWar("zdqmwpbs"));       // Let's fight again!
-        System.out.println(game.alphabetWar("wwwwwwz"));        // Left side wins!
+        System.out.println(game.alphabetWar("Strong"));        // Left side wins!
 
         // Test case using custom strengths
         Map<Character, Integer> customLeft = new HashMap<>();
         Map<Character, Integer> customRight = new HashMap<>();
-        customLeft.put('a', 5);  // Custom strength for 'a'
+        customLeft.put('a', 5); 
+        customLeft.put('c', 5);
+         // Custom strength for 'a'
         customRight.put('b', 5); // Custom strength for 'b'
         AlphabetWarGame customGame = new AlphabetWarGame(customLeft, customRight);
         System.out.println(customGame.alphabetWar("a", "b"));   // Let's fight again!

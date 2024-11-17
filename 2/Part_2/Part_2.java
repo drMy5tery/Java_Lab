@@ -43,8 +43,8 @@ public class Part_2 {
 
     public static void main(String[] args) {
         ShareTrader day_n = new ShareTrader();
-        //int stock_prices[] = {10, 22, 5, 75, 65, 80};
-        int stock_prices[] = {2, 30, 15, 10, 8, 25, 80};
+        int stock_prices[] = {10, 22, 5, 75, 65, 80};
+        //int stock_prices[] = {2, 30, 15, 10, 8, 25, 80};
         day_n.setStock_prices(stock_prices);
         day_n.displayStockprices();
         int maxProfit = day_n.findMaxProfit();
