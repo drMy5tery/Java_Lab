@@ -16,7 +16,7 @@ class Book {
         this.author = author;
         this.isAvailable = true;
     }
-    // Getters and Setters
+    // getters and setters
     public int getBookId() {
         return bookId;
     }
@@ -56,12 +56,12 @@ class Book {
         }
     }
 
-    // Fine Calculation
+    // fine Calculation
     public double calculateFine() {
-        int fine = 5; // Default fine rate
+        int fine = 5; // default fine rate
         return delayedDays * fine;
     }
-    // Display book details
+    // display book details
     public void displayBookDetails() {
         System.out.println("Book ID: " + bookId);
         System.out.println("Title: " + title);
@@ -116,21 +116,36 @@ class FictionBook extends Book{
         System.out.println("Genre: " + genre);
     }
 }
-// Managememt class
+
+class Periodical extends ReferenceBook {
+    private String issueFrequency;
+
+    public Periodical(int bookId, String title, String author, int edition, String issueFrequency) {
+        super(bookId, title, author, edition);
+        this.issueFrequency = issueFrequency;
+    }
+
+    
+    public void displayBookDetails() {
+        super.displayBookDetails();
+        System.out.println("Issue Frequency: " + issueFrequency);
+    }
+}
+// managememt class
 class LibraryManagementSystem {
     int totalBooks = 0;
     int borrowedBooks = 0;
     List<Book> bookList = new ArrayList<>();
     List<Book> borrowedBookList = new ArrayList<>();
 
-    // Add Book
+    
     public void addBook(Book book) {
         bookList.add(book);
         totalBooks++;
         System.out.println("Book added: " + book.getTitle());
     }
 
-    // Borrow Book
+    
     public void borrowBook(Book book) {
         if (book.isAvailable()) {
             book.borrowBook();
@@ -139,7 +154,7 @@ class LibraryManagementSystem {
         }
     }
 
-    // Return Book
+    
     public void returnBook(Book book) {
         if (!book.isAvailable()) {
             book.returnBook();
@@ -148,13 +163,13 @@ class LibraryManagementSystem {
         }
     }
 
-    // Display Total Books
+    
     public void displayTotalBooks() {
         System.out.println("Total Books in Library: " + totalBooks);
         System.out.println("Currently Borrowed Books: " + borrowedBooks);
     }
 
-    // Display Borrowed Books
+    
     public void displayBorrowedBooks() {
         System.out.println("\n--- Borrowed Books ---");
         for (Book book : borrowedBookList) {
@@ -168,41 +183,51 @@ public class Part_b {
     public static void main(String[] args) {
         LibraryManagementSystem library = new LibraryManagementSystem();
 
-        // Create books
-        ReferenceBook refBook1 = new ReferenceBook(1, "Java Programming", "John", 3);
-        ReferenceBook refBook2 = new ReferenceBook(4, "Data Structures", "Alice", 2);
+        
+        ReferenceBook refBook1 = new ReferenceBook(1, "Java", "Jawa", 3);
+        ReferenceBook refBook2 = new ReferenceBook(4, "C", "Sam", 2);
 
         FictionBook ficBook1 = new FictionBook(2, "Harry Potter", "J.K. Rowling", "Fantasy");
-        FictionBook ficBook2 = new FictionBook(5, "The Hobbit", "J.R.R. Tolkien", "Adventure");
+        FictionBook ficBook2 = new FictionBook(5, "Cyberpunk 1997", "Johny Silverhand", "Adventure");
+
+        Periodical periodical = new Periodical(3, "Anantha Vikatan", "Publishers", 5, "Weekly");
 
 
-        // Add books to the library
+
         library.addBook(refBook1);
         library.addBook(refBook2);
         library.addBook(ficBook1);
         library.addBook(ficBook2);
+        library.addBook(periodical);
 
-        // Borrow books
+    
         System.out.println("\n--- Borrowing Books ---");
         library.borrowBook(refBook1);
         library.borrowBook(ficBook1);
 
-        // Set late days for overdue fine calculation
+        // set late days for overdue fine calculation
         refBook1.set_delayedDays(3);
-        // Display borrowed books
+        
         library.displayBorrowedBooks();
 
-        // Return books
+        
         System.out.println("\n--- Returning Books ---");
         library.returnBook(refBook1);
 
-        // Display total books
+        
         System.out.println("\n--- Library Summary ---");
         library.displayTotalBooks();
 
-        //Display Delayed book
+        
         System.out.println("\n--- Delayed Book Details ---");
         refBook1.displayBookDetails();
+
+        //@override not needed
+        System.out.println("\n--- Periodic Book Details ---");
+        periodical.displayBookDetails();
+
+        System.out.println("\n--- Delayed Book Details ---");
+        ficBook1.displayBookDetails();
 
     }    
 }
