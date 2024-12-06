@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Arrays;   
 class Denomination extends Thread{
     
-    public int run(int[] coins, int sum){
+    public int run(int[] coins, int sum, int Sta){
         for (int coin : coins){
             for (int i = coin; i <= sum ; i++) {
                 
