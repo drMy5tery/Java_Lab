@@ -19,20 +19,19 @@ public class Part_2 {
                             lock.wait();
                         }
                         order = orderQueue.poll();
-                        System.out.println("Chef picked: " + order);
+                        System.out.println("Picked Chef: " + order);
                         lock.notifyAll();
                     }
                     
-                    System.out.println("Chef is preparing " + order);
+                    System.out.println("Food is being Prepared: " + order);
                     Thread.sleep(3000);
-                    System.out.println("Chef prepared: " + order);
+                    System.out.println("Food done: " + order);
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         });
 
-        // Waiter thread
         Thread waiterThread = new Thread(() -> {
             try {
                 while (orderCount[0] < max_orders) {
@@ -42,10 +41,10 @@ public class Part_2 {
                         }
                         String order = "Order NO." + (++orderCount[0]);
                         orderQueue.add(order);
-                        System.out.println("Waiter placed: " + order);
+                        System.out.println("Order placed: " + order);
                         lock.notifyAll();
                     }
-                    // Simulate delivery time
+                    // simulate delivery time
                     Thread.sleep((long) (3000));
                 }
             } catch (InterruptedException e) {
@@ -64,6 +63,6 @@ public class Part_2 {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println("All orders have been processed. Restaurant is closing!");
+        System.out.println("Thread Execution Finished");
     }
 }
