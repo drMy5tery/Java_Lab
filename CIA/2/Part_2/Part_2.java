@@ -16,7 +16,7 @@ public class Part_2 {
                         String order = max_queue.remove(0);
                         System.out.println("Picked Order no.: " + order);
 
-                        // Simulate preparation time
+                        // simulate preparation time
                         System.out.println("Cooking: " + order);
                         Thread.sleep(3000);
                         System.out.println("Prepared: " + order);
@@ -48,7 +48,7 @@ public class Part_2 {
             }
         });
 
-        // Start threads
+        // start threads
         chefThread.start();
         waiterThread.start();
         chefThread.join();
