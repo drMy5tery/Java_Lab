@@ -5,7 +5,7 @@ public class Part_2 {
         ArrayList<String> max_queue = new ArrayList<>();
         int max_orders = 15;
 
-        // chef thread
+       
         Thread chefThread = new Thread(() -> {
             try {
                 synchronized (max_queue) {
@@ -28,7 +28,7 @@ public class Part_2 {
             }
         });
 
-        // Waiter thread
+        
         Thread waiterThread = new Thread(() -> {
             try {
                 synchronized (max_queue) {
@@ -48,7 +48,7 @@ public class Part_2 {
             }
         });
 
-        // start threads
+
         chefThread.start();
         waiterThread.start();
         chefThread.join();
