@@ -1,11 +1,12 @@
 // collection is a parent interface
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 public class Practice_1 {  
     public static void main(String[] args) {
         //Collection c = new ArrayList();
-        List<Integer> c = new ArrayList();
+        List<String> c = new ArrayList();
         int temp_int = 0;
         int i = 0;
         // Array is not dynamic that is not store more than defined size
@@ -17,17 +18,14 @@ public class Practice_1 {
     //     c.add(30.4f);
     //     c.add("rithul");
     //     System.out.println(c);
-        c.add(206);
-        c.add(331);
-        c.add(114);
-        c.add(417);
-       // Collection.sort(c);
-
-        for (Object elem : c) {
-            System.out.println(elem);
-
-            c[i] = elem % 10;
-        }        
+    //     System.out.println(c.size());
+        c.add("206");
+        c.add("331");
+        c.add("114");
+        c.add("417");
+        
+        Comparator d = new Define();
+        Collections.sort(c, d);
         // Iterator i = c.iterator();
         // while(i.hasNext()){
         //     System.out.println(i.next());
@@ -35,7 +33,7 @@ public class Practice_1 {
         // for (Object elem : c) {
         //  System.out.println(elem);   
         // }
-
+        System.out.println(c);
 
 
     }   
