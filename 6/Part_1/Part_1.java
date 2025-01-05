@@ -1,6 +1,6 @@
-import java.util.*;
 
-// class to calculate combinations for a given range of coins
+import java.util.Arrays;
+
 class CoinCombinationTask implements Runnable {
     int[] coins; // coins array
     int sum;     // target sum
@@ -38,31 +38,25 @@ class CoinCombinationTask implements Runnable {
 
 public class Part_1 {
     public static void main(String[] args) throws InterruptedException {
-        
-        int[] coins1 = {1, 2, 3};
-        int targetSum1 = 4;
+        // test case 1
+        int[] coins1 = {1, 2, 5};
+        int targetSum1 = 5;
 
-        
+        // test case 2
         int[] coins2 = {2, 5, 3, 6};
         int targetSum2 = 10;
 
-        System.out.println("Test Case 1: Coins = {1, 2, 3}, Sum = 4");
+        System.out.println("Test Case 1: Coins =" + Arrays.toString(coins1) + ", Sum = "+ targetSum1);
         runTestCase(coins1, targetSum1);
 
-        System.out.println("\nTest Case 2: Coins = {2, 5, 3, 6}, Sum = 10");
+        System.out.println("\nTest Case 2: Coins" + Arrays.toString(coins2) + ", Sum = "+ targetSum2);
         runTestCase(coins2, targetSum2);
     }
 
     private static void runTestCase(int[] coins, int targetSum) throws InterruptedException {
-        // split coins for two threads
-        int mid = coins.length / 2;
-
-        int[] coins1 = Arrays.copyOfRange(coins, 0, mid);
-        int[] coins2 = Arrays.copyOfRange(coins, mid, coins.length);
-
-        // create two threads to process combinations
-        CoinCombinationTask task1 = new CoinCombinationTask(coins1, targetSum);
-        CoinCombinationTask task2 = new CoinCombinationTask(coins2, targetSum);
+        // create two threads to compute the same combinations concurrently
+        CoinCombinationTask task1 = new CoinCombinationTask(coins, targetSum);
+        CoinCombinationTask task2 = new CoinCombinationTask(coins, targetSum);
 
         Thread t1 = new Thread(task1);
         Thread t2 = new Thread(task2);
@@ -75,8 +69,8 @@ public class Part_1 {
         t1.join();
         t2.join();
 
-        // combine results from both threads
-        int result = task1.getResult() + task2.getResult();
+        // combine results (since both threads compute the same result, just take one)
+        int result = task1.getResult();
 
         System.out.println("total number of ways to make sum = " + targetSum + " is: " + result);
     }
