@@ -28,7 +28,7 @@ public class PingPong extends JPanel implements Runnable, KeyListener {
     private static int BALL_SPEED_X = 4;
     private static int BALL_SPEED_Y = 4;
     private static final double UPS = 60.0;
-    private static final double FPS = 60.0;
+   // private static final double FPS = 60.0;
     private static final boolean[] KEYS = new boolean[65535];
     private static final Color BACKGROUND_COLOR = new Color(30, 30, 30);
     private static final Color ROCKET_COLOR = new Color(220, 220, 220);
@@ -43,6 +43,7 @@ public class PingPong extends JPanel implements Runnable, KeyListener {
 
     private int leftScore = 0;
     private int rightScore = 0;
+    private int FPS;
     private String player1Name;
     private String player2Name;
     private int maxPoints;
@@ -60,13 +61,10 @@ public class PingPong extends JPanel implements Runnable, KeyListener {
         // Get the local graphics environment
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
-        // Get the default screen device (current display)
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
         //return defaultScreen.getDisplayMode().getRefreshRate();
-        // Get the display mode of the current display
+        
         DisplayMode displayMode = defaultScreen.getDisplayMode();
-
-        // Get the refresh rate
         int refreshRate = displayMode.getRefreshRate();
 
         if (refreshRate == displayMode.REFRESH_RATE_UNKNOWN) {
@@ -76,6 +74,7 @@ public class PingPong extends JPanel implements Runnable, KeyListener {
         }
     }
     public void start() {
+        this.FPS = getCurrentDisplayRefreshRate();
         player1Name = JOptionPane.showInputDialog("Enter Player 1 Name:");
         player2Name = JOptionPane.showInputDialog("Enter Player 2 Name:");
         String maxPointsInput;
