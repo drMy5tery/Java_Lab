@@ -26,7 +26,7 @@ public class DatabaseInitializer {
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "full_name VARCHAR(255), " +
                 "email VARCHAR(255) UNIQUE, " +
-                "contact_number VARCHAR(15), " +
+                "contact_number VARCHAR(10), " +
                 "country VARCHAR(100))";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
