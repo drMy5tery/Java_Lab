@@ -130,8 +130,8 @@ public class PingPongImproved extends JPanel implements Runnable, KeyListener {
         final int UPS = 60; // Updates per second (ticks per second)
         final double nsPerTick = 1_000_000_000.0 / UPS; // Nanoseconds per update
     
-       // int refreshRate = getRefreshRate(); // Dynamically get refresh rate (assume 60+ supported)
-        int targetFPS = getRefreshRate(); // Cap FPS at 60 for standard gameplay
+        int refreshRate = getRefreshRate(); // Dynamically get refresh rate (assume 60+ supported)
+        int targetFPS = refreshRate; 
         long targetFrameTime = 1_000_000_000L / targetFPS; // Nanoseconds per frame
         final int minSleepTime = 16; // Minimum sleep time in milliseconds
     
@@ -328,7 +328,7 @@ public class PingPongImproved extends JPanel implements Runnable, KeyListener {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Ping Pong Improved");
+        JFrame frame = new JFrame("Ping Pong");
         PingPongImproved game = new PingPongImproved();
         frame.add(game);
         frame.pack();
